@@ -22,13 +22,13 @@ trust = DontTrust(username=Schema().string().required().alphanum(),
 
 try:
     data = trust.validate(username="hello123", password="abcdefg")
-    # data["username], data["password"] ...
+    # data["username"], data["password"] ...
 except ValidationError as e:
     print(e.field, e.message)
     # Other error handling
 ```
 
-For more info and examples, visit the [docs](https://donttrust.readthedocs.io)
+For more info and examples, visit the docs
 
 ## Development
 
