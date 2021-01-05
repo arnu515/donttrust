@@ -1,0 +1,20 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+
+[{*.har,*.jsb2,*.jsb3,*.json,*.yaml,*.yml,.babelrc,.eslintrc,.stylelintrc,bowerrc,jest.config}]
+indent_size = 2
+
+[{*.markdown,*.md}]
+indent_size = 2
+ij_markdown_force_one_space_after_blockquote_symbol = true
+ij_markdown_force_one_space_after_header_symbol = true
+ij_markdown_force_one_space_after_list_bullet = true
+ij_markdown_force_one_space_between_words = true
+ij_markdown_keep_indents_on_empty_lines = false
+ij_markdown_max_lines_between_paragraphs = 1
