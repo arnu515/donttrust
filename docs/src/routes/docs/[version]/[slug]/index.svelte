@@ -19,17 +19,40 @@
 <script lang="ts">
     import marked from "marked";
     import hljs from "highlight.js";
-    import { onMount } from "svelte";
+    import { afterUpdate, getContext } from "svelte";
 
     export let docs: {
         content: string;
-        matter: { title: string; order: number; slug: string };
+        matter: {
+            title: string;
+            order: number;
+            slug: string;
+            description: string;
+            keywords: string;
+        };
     };
+    export let version: string;
+    const items = getContext<typeof docs[]>("items");
 
-    onMount(() => {
-        document.querySelectorAll("pre code").forEach((el) => {
-            hljs.highlightBlock(el as HTMLElement);
-        });
+    afterUpdate(code);
+
+    marked.setOptions({
+        highlight: function (code, language) {
+            const validLanguage = hljs.getLanguage(language)
+                ? language
+                : "plaintext";
+            return hljs.highlight(validLanguage, code).value;
+        },
+    });
+
+    function code() {
+        if (typeof document === "undefined") {
+            return;
+        }
+
+        // document.querySelectorAll("pre code").forEach((el) => {
+        //     hljs.highlightBlock(el as HTMLElement);
+        // });
 
         document.querySelectorAll("pre").forEach((el) => {
             const button = document.createElement("button");
@@ -58,12 +81,56 @@
 
             el.appendChild(button);
         });
-    });
+    }
 </script>
 
+<svelte:head>
+    <title>{docs.matter.title}</title>
+    <meta name="description" content={docs.matter.description} />
+    <meta name="keywords" content={docs.matter.keywords} />
+</svelte:head>
+
 <h1 class="w3-xxxlarge">{docs.matter.title}</h1>
+<p>{docs.matter.description}</p>
 <hr class="w3-border-top w3-border-black" />
 
 <div class="w3-padding">
     {@html marked(docs.content)}
+</div>
+
+<div class="w3-row">
+    {#if items.find((i) => i.matter.order === docs.matter.order - 1)}
+        <div class="w3-col s12 m6">
+            <a
+                style="text-decoration: none"
+                href="/docs/{version}/{items.find((i) => i.matter.order === docs.matter.order - 1).matter.slug}">
+                <div
+                    class="w3-panel w3-border w3-leftbar w3-border-black w3-padding">
+                    <h5 style="margin: 0" class="w3-large">Previous</h5>
+                    <p style="margin: 0" class="w3-text-gray">
+                        {items.find((i) => i.matter.order === docs.matter.order - 1).matter.title}
+                    </p>
+                </div>
+            </a>
+        </div>
+    {:else}
+        <div class="w3-col s12 m6">&nbsp;</div>
+    {/if}
+    {#if items.find((i) => i.matter.order === docs.matter.order + 1)}
+        <div class="w3-col s12 m6">
+            <a
+                style="text-decoration: none"
+                href="/docs/{version}/{items.find((i) => i.matter.order === docs.matter.order + 1).matter.slug}">
+                <div
+                    class="w3-panel w3-border w3-rightbar w3-border-black w3-padding">
+                    <h5 class="w3-large" style="margin: 0">Next</h5>
+                    <p class="w3-text-gray" style="margin: 0">
+                        {items.find((i) => i.matter.order === docs.matter.order + 1).matter.title}
+                    </p>
+                </div>
+            </a>
+        </div>
+    {:else}
+        <div class="w3-col s12 m6">&nbsp;</div>
+    {/if}
 </div>

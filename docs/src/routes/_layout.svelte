@@ -1,5 +1,5 @@
 <script lang="ts">
-    export let segment: string;
+    export const segment: string = undefined;
 </script>
 
 <main>

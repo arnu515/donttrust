@@ -18,6 +18,7 @@
 </script>
 
 <script lang="ts">
+    import { setContext } from "svelte";
     import DocsSidebar from "../../../components/DocsSidebar.svelte";
     import Navbar from "../../../components/Navbar.svelte";
 
@@ -26,8 +27,16 @@
     export let active: string;
     export let data: {
         filename: string;
-        matter: { title: string; order: number; slug: string };
+        matter: {
+            title: string;
+            order: number;
+            slug: string;
+            description: string;
+            keywords: string;
+        };
     }[];
+
+    setContext("items", data);
 </script>
 
 <Navbar bind:sidebar />

@@ -2,6 +2,8 @@
 title: "Installation"
 order: 1
 slug: "installation"
+description: "Learn how to install DontTrust to your python project using either pip or setup.py"
+keywords: "donttrust,python,install,pip,setup.py"
 ---
 
 ## Installing using pip

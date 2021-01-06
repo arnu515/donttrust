@@ -20,9 +20,19 @@
     export let version: string;
     export let data: {
         filename: string;
-        matter: { title: string; order: number; slug: string };
+        matter: {
+            title: string;
+            order: number;
+            slug: string;
+            description: string;
+            keywords: string;
+        };
     }[];
 </script>
+
+<svelte:head>
+    <title>DontTrust's Documentation</title>
+</svelte:head>
 
 <h1 class="w3-jumbo" style="margin-bottom: 0">DontTrust's Documentation</h1>
 <p class="w3-xlarge w3-text-dark-gray" style="margin-top: 0">
