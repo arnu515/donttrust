@@ -12,7 +12,9 @@ For the main documentation, go to `/docs </docs>`_
 
 .. toctree::
    :maxdepth: 3
-   :caption: Contents:
+   :caption: API:
+
+`API Reference <docstrings/modules>`_
 
 Indices and tables
 ==================

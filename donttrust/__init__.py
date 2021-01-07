@@ -42,7 +42,7 @@ class DontTrust:
 
         :param kwargs: The items to validate. It should be a kwargs object with the same fields as the schema.
         :returns: Returns a dictionary with the validated items.
-        :raises: Raises ``donttrust.ValidationError` if validation fails
+        :raises: Raises ``donttrust.ValidationError`` if validation fails
         """
         final = dict()
         try:
@@ -56,9 +56,10 @@ class DontTrust:
         """
         Same as ``validate``, but returns a dictionary instead of throwing errors.
 
+        Returns ``{"data": data}`` if validation succeedes, or ``{"error": message, "field": fieldname}`` if validation fails
+
         :param kwargs: The items to validate. It should be a kwargs object with the same fields as the schema.
-        :returns: A dictionary with a "data" field containing validated data if validation succeeds, or a dictionary
-        with "error" and "field" fields if validation fails.
+        :returns: The dictionary
         """
         try:
             final = self.validate(**kwargs)
