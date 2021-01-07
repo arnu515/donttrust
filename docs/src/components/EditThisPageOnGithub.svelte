@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
 
-    let href = "/";
+    export let href = "/";
 
     onMount(() => {
         href = `https://github.com/arnu515/donttrust/tree/master/docs/content${window.location.pathname.replace(

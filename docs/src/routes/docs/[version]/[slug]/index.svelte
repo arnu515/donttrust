@@ -35,7 +35,16 @@
     export let version: string;
     const items = getContext<typeof docs[]>("items");
 
-    afterUpdate(code);
+    let href = "/";
+
+    afterUpdate(() => {
+        code();
+        if (typeof window !== "undefined")
+            href = `https://github.com/arnu515/donttrust/tree/master/docs/content${window.location.pathname.replace(
+                "/docs",
+                ""
+            )}.md`;
+    });
 
     marked.setOptions({
         highlight: function (code, language) {
@@ -99,7 +108,7 @@
     {@html marked(docs.content)}
 </div>
 
-<EditThisPageOnGithub />
+<EditThisPageOnGithub {href} />
 
 <div class="w3-row-padding">
     {#if items.find((i) => i.matter.order === docs.matter.order - 1)}
