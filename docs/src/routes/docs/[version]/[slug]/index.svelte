@@ -98,7 +98,7 @@
     {@html marked(docs.content)}
 </div>
 
-<div class="w3-row">
+<div class="w3-row-padding">
     {#if items.find((i) => i.matter.order === docs.matter.order - 1)}
         <div class="w3-col s12 m6">
             <a
