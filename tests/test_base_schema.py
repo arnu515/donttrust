@@ -11,8 +11,8 @@ class Test(unittest.TestCase):
 
     def test_schema_2(self):
         schema = Schema("test2").disallow(1, "sada", False)
-        self.assertTrue(schema.validate_without_exception(None))
-        self.assertTrue(schema.validate_without_exception("test"))
+        self.assertIsNone(schema.validate_without_exception(None))
+        self.assertEqual(schema.validate_without_exception("test"), "test")
         self.assertFalse(schema.validate_without_exception(False))
         self.assertFalse(schema.validate_without_exception(1))
 
@@ -20,7 +20,7 @@ class Test(unittest.TestCase):
         schema = Schema("test3").required()
         self.assertFalse(schema.validate_without_exception(None))
         self.assertTrue(schema.validate_without_exception("asodkpasodk"))
-        self.assertTrue(schema.validate_without_exception(""))
+        self.assertEqual(schema.validate_without_exception(""), "")
 
 
 def main():

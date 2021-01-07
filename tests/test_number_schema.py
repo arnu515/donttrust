@@ -12,7 +12,7 @@ class Test(unittest.TestCase):
         self.assertFalse(schema.validate_without_exception("abcd"))
 
     def test_2(self):
-        schema = Schema("test2").number().disallow(15).greater(5).max(500).float().multiply(3)
+        schema = Schema("test2").number().disallow(15).min(5).max(500).float().multiply(3)
         self.assertEqual(schema.validate_without_exception(5.0), 15)
         self.assertFalse(schema.validate_without_exception(50000.0))
         self.assertFalse(schema.validate_without_exception(3.0))
