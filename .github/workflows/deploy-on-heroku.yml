@@ -45,6 +45,6 @@ jobs:
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           procfile: |
-            release: npm run dev
+            release: npm run build
             web: node __sapper__/build
           appdir: docs
