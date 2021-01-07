@@ -73,7 +73,7 @@ class DontTrust:
         except ValidationError as e:
             return {"error": e.message, "field": e.field}
 
-    def validate_without_exception(self, dict_=None, **kwargs):
+    def validate_without_exception(self, dict_=None, **items):
         """
         Same as ``validate``, but returns ``False`` if validation fails
 
@@ -82,6 +82,6 @@ class DontTrust:
         :return: Returns a dictionary with validated data if validation succeeds, else returns False
         """
         try:
-            return self.validate(dict_, **kwargs)
+            return self.validate(dict_, **items)
         except ValidationError:
             return False
