@@ -42,7 +42,6 @@ Currently, DontTrust supports these schemas:
 - `boolean`
 - `date`
 - `email`
-- `link`
 
 ### Use a specific schema
 
@@ -68,7 +67,6 @@ from donttrust.schema import BooleanSchema
 from donttrust.schema import NumberSchema
 from donttrust.schema import EmailSchema
 from donttrust.schema import DateSchema
-from donttrust.schema import LinkSchema
 ```
 
 <div class="w3-panel w3-pale-blue w3-border w3-leftbar w3-border-blue w3-padding">
