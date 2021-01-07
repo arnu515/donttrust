@@ -35,7 +35,7 @@ class DontTrust:
             self._items[key] = items[key]
             self._items[key].field = key
 
-    def validate(self, dict_=None, **kwargs):
+    def validate(self, dict_=None, **items):
         """
         Validates all schema in this object and throws a ``donttrust.ValidationError`` if validation fails.
         To not raise an error and return ``False`` if validation fails, use ``validate_without_exception``.
@@ -49,7 +49,7 @@ class DontTrust:
         try:
             if dict_ is None:
                 for key in self._items.keys():
-                    final[key] = self._items[key].validate(kwargs.get(key))
+                    final[key] = self._items[key].validate(items.get(key))
             else:
                 for key in self._items.keys():
                     final[key] = self._items[key].validate(dict_.get(key))
