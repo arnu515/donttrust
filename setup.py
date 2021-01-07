@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
-from pathlib import Path
+from os import path
 
-README_MD = (Path(__file__).parent / "README.md").read_text()
+README_MD = open(path.join(path.dirname(path.abspath(__file__)), "README.md")).read()
 
 setup(
     name="donttrust",
-    version="0.1.0",
+    version="0.1.1",
     description="Form validation library for python",
     long_description=README_MD,
     long_description_content_type="text/markdown",
