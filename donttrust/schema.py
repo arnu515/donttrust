@@ -492,6 +492,8 @@ class BooleanSchema(Schema):
             return True
         elif value in self._falsy_values:
             return False
+        elif not self._strict:
+            return bool(value)
 
     def __init__(self, id_: str):
         super().__init__(id_)
