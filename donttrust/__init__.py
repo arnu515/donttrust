@@ -57,7 +57,7 @@ class DontTrust:
         except DontTrustBaseException as e:
             raise ValidationError(e.field, e.message)
 
-    def validate_and_return_json_object(self, dict_=None, **kwargs) -> dict:
+    def validate_and_return_json_object(self, dict_=None, **items) -> dict:
         """
         Same as ``validate``, but returns a dictionary instead of throwing errors.
 
@@ -68,7 +68,7 @@ class DontTrust:
         :returns: The dictionary
         """
         try:
-            final = self.validate(dict_, **kwargs)
+            final = self.validate(dict_, **items)
             return {"data": final}
         except ValidationError as e:
             return {"error": e.message, "field": e.field}
