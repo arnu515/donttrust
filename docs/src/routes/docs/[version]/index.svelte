@@ -42,7 +42,10 @@
 
 <h3>Table of contents:</h3>
 <ul>
-    {#each data as { matter: { title, slug } }}
+    {#each data.sort((x, y) => {
+        return x.matter.order - y.matter.order;
+    }) as { matter: { title, slug } }}
         <li><a href="/docs/{version}/{slug}">{title}</a></li>
     {/each}
+    <li><a href="/apiref/index.html">API Reference</a></li>
 </ul>

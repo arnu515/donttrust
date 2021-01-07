@@ -3,14 +3,27 @@ class DontTrustBaseException(Exception):
     field: str
 
     def __init__(self, field: str, message: str):
+        """
+        BaseException used by Schemas. Handle all exceptions (except ``donttrust.ValidationError``) by handling this
+        exception.
+
+        :param field: Field causing the issue.
+        :param message: Custom message. Formatted with the field using ``str.format()``.
+        """
         self.field = field
         self.__message = message
 
     def __dict__(self):
+        """
+        :return: Returns a JSON serializable dictionary.
+        """
         return dict({self.field: self.message})
 
     @property
     def message(self):
+        """
+        :return: Formatted message
+        """
         return self.__message
 
 

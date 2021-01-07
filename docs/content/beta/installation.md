@@ -47,5 +47,5 @@ from donttrust import DontTrust, Schema
 
 trust = DontTrust(test=Schema().string())
 
-data = trust.validate_and_return_json_object({"test": "abcd"})
+data = trust.validate_and_return_json_object(test="abcd")
 ```
