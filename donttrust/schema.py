@@ -641,7 +641,7 @@ class DateSchema(Schema):
         if value is None and not self._required:
             return value
 
-        date = self.__get_date(value)
+        date = self.__get_date(value, False)
         if self._min and date < self._min:
             raise InvalidDateException(self.field, "\"{}\" should be greater than " + self._max.strftime("%Y-%m-%d"))
         if self._max and date > self._max:
