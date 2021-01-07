@@ -23,5 +23,9 @@ class Test(unittest.TestCase):
         self.assertTrue(schema.validate_without_exception(""))
 
 
-if __name__ == '__main__':
+def main():
     unittest.main()
+
+
+if __name__ == '__main__':
+    main()

@@ -23,5 +23,10 @@ class Test(unittest.TestCase):
         self.assertFalse(trust.validate_without_exception({"password": "abcd"}))
 
 
-if __name__ == '__main__':
+def main():
     unittest.main()
+
+
+if __name__ == '__main__':
+    main()
+
