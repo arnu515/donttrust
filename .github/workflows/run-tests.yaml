@@ -20,6 +20,11 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      # Beacause of a certain bug (idk)
+      - name: Install pathlib
+        run: |
+          python -m pip install pathlib
+
       - name: Install DontTrust
         run: |
           python setup.py install
