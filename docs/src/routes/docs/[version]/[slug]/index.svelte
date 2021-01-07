@@ -20,6 +20,7 @@
     import marked from "marked";
     import hljs from "highlight.js";
     import { afterUpdate, getContext } from "svelte";
+    import EditThisPageOnGithub from "../../../../components/EditThisPageOnGithub.svelte";
 
     export let docs: {
         content: string;
@@ -97,6 +98,8 @@
 <div class="w3-padding">
     {@html marked(docs.content)}
 </div>
+
+<EditThisPageOnGithub />
 
 <div class="w3-row-padding">
     {#if items.find((i) => i.matter.order === docs.matter.order - 1)}
