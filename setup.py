@@ -5,7 +5,7 @@ README_MD = (Path(__file__).parent / "README.md").read_text()
 
 setup(
     name="donttrust",
-    version="0.0.2",
+    version="0.1.0",
     description="Form validation library for python",
     long_description=README_MD,
     long_description_content_type="text/markdown",
