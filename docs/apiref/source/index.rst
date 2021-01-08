@@ -8,7 +8,9 @@ DontTrust's API Reference
 
 This is the documentation for all classes, methods, objects and anything else. This documentation is derived from the place where the objects are defined at.
 
-For the main documentation, go to `/docs </docs>`_
+For the main documentation, `click here <https://donttrust.vercel.com>`_
+
+For the github repository, `click here <https://github.com/arnu515/donttrust>`_
 
 .. toctree::
    :maxdepth: 3
