@@ -28,7 +28,7 @@ except ValidationError as e:
     # Other error handling
 ```
 
-For more info and examples, visit the docs
+For more info and examples, visit the [docs](https://donttrust.gq)
 
 ## Development
 
