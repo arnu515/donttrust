@@ -10,7 +10,6 @@ polka() // You can also use Express
     .use(
         compression({ threshold: 0 }),
         sirv("static", { dev }),
-        sirv("apiref/build", { dev }),
         sapper.middleware()
     )
     .listen(PORT, (err) => {
