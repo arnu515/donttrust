@@ -44,7 +44,7 @@
 {#if sidebar}
     <DocsSidebar
         items={data.map((x) => {
-            return { id: x.matter.slug, path: `/docs/${version}/${x.matter.slug}`, title: x.matter.title };
+            return { id: x.matter.slug, order: x.matter.order, path: `/docs/${version}/${x.matter.slug}`, title: x.matter.title };
         })}
         {active} />
 {/if}

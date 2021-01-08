@@ -1,10 +1,11 @@
 <script lang="ts">
-    import hljs from "highlight.js";
     import { onMount } from "svelte";
+    import prism from "prismjs";
+    import "prismjs/components/prism-python";
 
     onMount(() => {
         document.querySelectorAll("pre code").forEach((el) => {
-            hljs.highlightBlock(el as HTMLElement);
+            prism.highlightElement(el);
         });
 
         document
@@ -75,8 +76,8 @@ print(trust.validate_and_return_json_object({'{"username": "  test    ", "passwo
             </code></pre>
         </div>
 
-        <pre class="w3-col m6"><code class="language-json">
-// OUTPUT:
+        <pre class="w3-col m6"><code class="language-python">
+# Output
 {`{
     "username": "test",
     "password": "password1",
