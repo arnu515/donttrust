@@ -1,11 +1,10 @@
 <script lang="ts">
-    import hljs from "highlight.js";
     import { onMount } from "svelte";
 
     onMount(() => {
-        document.querySelectorAll("pre code").forEach((el) => {
-            hljs.highlightBlock(el as HTMLElement);
-        });
+        // document.querySelectorAll("pre code").forEach((el) => {
+        //     hljs.highlightBlock(el as HTMLElement);
+        // });
 
         document
             .querySelector("#copy-code")

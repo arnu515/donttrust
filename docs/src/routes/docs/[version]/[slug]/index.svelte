@@ -18,9 +18,14 @@
 
 <script lang="ts">
     import marked from "marked";
-    import hljs from "highlight.js";
+    import prism from "prismjs";
     import { afterUpdate, getContext } from "svelte";
     import EditThisPageOnGithub from "../../../../components/EditThisPageOnGithub.svelte";
+
+    import "prismjs/components/prism-python";
+    import "prismjs/components/prism-bash";
+    import "prismjs/plugins/autolinker/prism-autolinker";
+    import "prismjs/plugins/line-numbers/prism-line-numbers";
 
     export let docs: {
         content: string;
@@ -46,23 +51,10 @@
             )}.md`;
     });
 
-    marked.setOptions({
-        highlight: function (code, language) {
-            const validLanguage = hljs.getLanguage(language)
-                ? language
-                : "plaintext";
-            return hljs.highlight(validLanguage, code).value;
-        },
-    });
-
     function code() {
         if (typeof document === "undefined") {
             return;
         }
-
-        // document.querySelectorAll("pre code").forEach((el) => {
-        //     hljs.highlightBlock(el as HTMLElement);
-        // });
 
         document.querySelectorAll("pre").forEach((el) => {
             const button = document.createElement("button");
@@ -98,15 +90,24 @@
     <title>{docs.matter.title}</title>
     <meta name="description" content={docs.matter.description} />
     <meta name="keywords" content={docs.matter.keywords} />
+    <link rel="stylesheet" href="prism.min.css" />
+    <link rel="stylesheet" href="prism-autolinker.min.css" />
+    <link rel="stylesheet" href="prism-line-numbers.min.css" />
 </svelte:head>
 
 <h1 class="w3-xxxlarge">{docs.matter.title}</h1>
 <p>{docs.matter.description}</p>
 <hr class="w3-border-top w3-border-black" />
 
-<div class="w3-padding">
-    {@html marked(docs.content)}
-</div>
+{@html marked.parseInline(docs.content, {
+    gfm: true,
+    breaks: false,
+    highlight(code, lang) {
+        if (prism.languages[lang])
+            return prism.highlight(code, prism.languages[lang], lang);
+        else return code;
+    },
+})}
 
 <EditThisPageOnGithub {href} />
 
