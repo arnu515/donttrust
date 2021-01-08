@@ -23,7 +23,7 @@
             class="w3-button w3-hover-white {id === active ? 'w3-text-blue w3-hover-text-cyan' : 'w3-text-dark-gray w3-hover-text-black'}">{title}</a>
     {/each}
     <a
-        href="/apiref/index.html"
+        href="https://donttrust-apiref.vercel.app"
         class="w3-button w3-hover-white w3-text-dark-gray w3-hover-text-black">API
         Reference</a>
 </div>

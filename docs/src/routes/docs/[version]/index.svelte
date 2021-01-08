@@ -47,5 +47,5 @@
     }) as { matter: { title, slug } }}
         <li><a href="/docs/{version}/{slug}">{title}</a></li>
     {/each}
-    <li><a href="/apiref/index.html">API Reference</a></li>
+    <li><a href="https://donttrust-apiref.vercel.app">API Reference</a></li>
 </ul>
