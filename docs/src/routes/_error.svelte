@@ -13,6 +13,13 @@
 
 <p class="w3-center w3-large">{error.message}</p>
 
+<p class="w3-center"><a href="/">Homepage</a></p>
+{#if status !== 404}
+    <p class="w3-center">
+        <button class="w3-button w3-blue w3-hover-blue">Reload page</button>
+    </p>
+{/if}
+
 {#if dev && error.stack}
     <pre
         class="w3-border w3-light-gray w3-border-black w3-rounded w3-padding">
