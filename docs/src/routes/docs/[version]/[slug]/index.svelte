@@ -7,7 +7,12 @@
 
         try {
             const res = await this.fetch(`/docs/${version}/${slug}.json`);
-            const data = await res.json();
+            let data: { success: boolean; data: any; message: string };
+            try {
+                data = await res.json();
+            } catch {
+                window.location.reload();
+            }
             if (data.success) return { docs: data.data, version };
             else this.error(res?.status || 500, data.message);
         } catch (e) {
