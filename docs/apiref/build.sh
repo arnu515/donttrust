@@ -8,4 +8,3 @@ sphinx-apidoc -f -o docs/apiref/source/docstrings donttrust
 cd docs/apiref
 make html
 mv build/html build/apiref
-mv build/apiref ../static
