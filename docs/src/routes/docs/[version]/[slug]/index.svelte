@@ -56,6 +56,10 @@
             return;
         }
 
+        document.querySelectorAll("pre code").forEach((el) => {
+            prism.highlightElement(el);
+        });
+
         document.querySelectorAll("pre").forEach((el) => {
             const button = document.createElement("button");
             button.className =
@@ -90,24 +94,13 @@
     <title>{docs.matter.title}</title>
     <meta name="description" content={docs.matter.description} />
     <meta name="keywords" content={docs.matter.keywords} />
-    <link rel="stylesheet" href="prism.min.css" />
-    <link rel="stylesheet" href="prism-autolinker.min.css" />
-    <link rel="stylesheet" href="prism-line-numbers.min.css" />
 </svelte:head>
 
 <h1 class="w3-xxxlarge">{docs.matter.title}</h1>
 <p>{docs.matter.description}</p>
 <hr class="w3-border-top w3-border-black" />
 
-{@html marked.parseInline(docs.content, {
-    gfm: true,
-    breaks: false,
-    highlight(code, lang) {
-        if (prism.languages[lang])
-            return prism.highlight(code, prism.languages[lang], lang);
-        else return code;
-    },
-})}
+{@html marked.parseInline(docs.content, { gfm: true, breaks: false })}
 
 <EditThisPageOnGithub {href} />
 
