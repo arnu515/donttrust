@@ -2,7 +2,7 @@
 
 These are the docs for DontTrust.
 
-To visit the docs, click here
+To visit the docs, click [here](https://donttrust.gq)
 
 ## How to edit
 
