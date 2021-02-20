@@ -1,0 +1,2 @@
+language = "bash"
+run = "python3 setup.py install && cd tests && python3 -m unittest discover"
