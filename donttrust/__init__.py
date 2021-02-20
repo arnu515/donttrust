@@ -15,7 +15,7 @@ class ValidationError(Exception):
 
 
 class DontTrust:
-    _items: Dict[str, Schema] = dict()
+    _items: Dict[str, Schema]
 
     def __init__(self, **items: Schema):
         """
@@ -30,6 +30,7 @@ class DontTrust:
 
         :param items: A kwargs object with each item being a ``donttrust.schema.Schema`` object.
         """
+        self._items = dict()
 
         for key in items.keys():
             self._items[key] = items[key]
