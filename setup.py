@@ -5,7 +5,7 @@ README_MD = open(path.join(path.dirname(path.abspath(__file__)), "README.md")).r
 
 setup(
     name="donttrust",
-    version="0.1.4",
+    version="0.1.5",
     description="Form validation library for python",
     long_description=README_MD,
     long_description_content_type="text/markdown",
