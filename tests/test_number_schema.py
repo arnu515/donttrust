@@ -29,11 +29,6 @@ class Test(unittest.TestCase):
         self.assertTrue(schema.validate_without_exception(3.14))
         self.assertEqual(schema.validate_without_exception(None), None)
 
-    def test_5(self):
-        schema = Schema("test5").number().multiple(0.1).float()
-        self.assertTrue(schema.validate(1.0))
-        self.assertEqual(schema.validate_without_exception(None), None)
-
 
 def main():
     unittest.main()
