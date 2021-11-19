@@ -20,7 +20,7 @@ class Test(unittest.TestCase):
         self.assertEqual(schema.validate_without_exception(None), None)
 
     def test_3(self):
-        schema = Schema("test2.1").number()
+        schema = Schema("test3").number()
         self.assertFalse(schema.validate_without_exception("okaobkeokboerkoek"))
         self.assertEqual(schema.validate_without_exception(None), None)
 
