@@ -17,7 +17,7 @@ class Test(unittest.TestCase):
         self.assertFalse(schema.validate_without_exception(50000.0))
         self.assertFalse(schema.validate_without_exception(3.0))
         self.assertFalse(schema.validate_without_exception(19))
-        self.assertFalse(schema.validate_without_exception(None), None)
+        self.assertEqual(schema.validate_without_exception(None), None)
 
     def test_3(self):
         schema = Schema("test2.1").number()
