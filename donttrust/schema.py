@@ -324,7 +324,7 @@ class NumberSchema(Schema):
 
     _type = int
 
-    _multiple_of: int = 1
+    _multiple_of: int = None
 
     _add: int = None
     _subtract: int = None
@@ -343,7 +343,7 @@ class NumberSchema(Schema):
         if self._max and value > self._max:
             raise SizeException(self.field, self._max, True)
 
-        if value % self._multiple_of != 0:
+        if self._multiple_of and value % self._multiple_of != 0:
             raise MultipleException(self.field, self._multiple_of)
 
         if self._add:

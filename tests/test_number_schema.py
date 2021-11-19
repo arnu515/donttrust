@@ -17,11 +17,16 @@ class Test(unittest.TestCase):
         self.assertFalse(schema.validate_without_exception(50000.0))
         self.assertFalse(schema.validate_without_exception(3.0))
         self.assertFalse(schema.validate_without_exception(19))
-        self.assertFalse(schema.validate_without_exception(None), None)
+        self.assertEqual(schema.validate_without_exception(None), None)
 
     def test_3(self):
-        schema = Schema("test2.1").number()
+        schema = Schema("test3").number()
         self.assertFalse(schema.validate_without_exception("okaobkeokboerkoek"))
+        self.assertEqual(schema.validate_without_exception(None), None)
+
+    def test_4(self):
+        schema = Schema("test4").number().float()
+        self.assertTrue(schema.validate_without_exception(3.14))
         self.assertEqual(schema.validate_without_exception(None), None)
 
 
