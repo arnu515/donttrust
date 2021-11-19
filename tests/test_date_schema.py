@@ -6,13 +6,14 @@ from donttrust.schema import Schema
 
 class Test(unittest.TestCase):
     def test_1(self):
-        schema = Schema("test1").date().required().min('today').max("2022-12-31")
+        # Remind me to change this in 28 years!
+        schema = Schema("test1").date().required().min('today').max("2049-12-31")
 
-        self.assertTrue(schema.validate_without_exception("2021-04-01"))
+        self.assertTrue(schema.validate("2049-04-01"))
         self.assertFalse(schema.validate_without_exception(None))
         self.assertFalse(schema.validate_without_exception("2020-12-10"))
         self.assertFalse(schema.validate_without_exception("dsa"))
-        self.assertFalse(schema.validate_without_exception("2023-01-01"))
+        self.assertFalse(schema.validate_without_exception("2053-01-01"))
 
     def test_2(self):
         schema = Schema().date()
