@@ -28,7 +28,7 @@ except ValidationError as e:
     # Other error handling
 ```
 
-For more info and examples, visit the [docs](https://donttrust.gq)
+For more info and examples, visit the [docs](https://donttrust-docs.vercel.app)
 
 ## Development
 
